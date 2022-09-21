@@ -1,6 +1,6 @@
-@table = appuser
+@table = theme
 @id = 1
-@body = {"with": ["account", "role", "article", "comment"]}
+@body = {"with": ["article", "theme"]}
 
 GET http://blog.api/init
 
