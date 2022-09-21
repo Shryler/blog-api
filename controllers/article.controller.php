@@ -10,6 +10,21 @@
             return $item->Id_theme == $row->Id_theme;
         }));
         $row->theme = count($themes) == 1 ? array_shift($themes) : null;
+
+        $images = array_values(array_filter($sub_rows['image'], function($item) use ($row) {
+            return $item->Id_article == $row->Id_article;
+        }));
+        $row->image = count($images) == 1 ? array_shift($images) : null;
+
+        // Comment
+        if(isset($sub_rows['comment'])){
+            $comments = array_values(array_filter($sub_rows['comment'], function($item) use ($row) {
+                return $item->Id_article == $row->Id_article;
+            }));
+            if(isset($comments)){
+                $row->comments_list = $comments;
+            }
+        }
     }
 
 }
