@@ -1,6 +1,6 @@
-@table = theme
+@table = appuser
 @id = 1
-@body = {"title": "écologie", "img_src": "https://picsum.photos/id/237/200/300"}
+@body = {"with": ["account", "role"]}
 
 GET http://blog.api/init
 
@@ -28,3 +28,15 @@ PATCH http://blog.api/{{table}}/{{id}}
 
 ###
 DELETE http://blog.api/{{table}}/{{id}}
+
+###
+POST http://blog.api/{{table}}/0
+Content-Type: application/json
+
+{{body}}
+
+###
+POST http://blog.api/{{table}}/{{id}}
+Content-Type: application/json
+
+{{body}}
