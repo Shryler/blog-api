@@ -57,7 +57,11 @@ class DatabaseService
         $row = $resp->result && count($rows) == 1 ? $rows[0] : null;
         return $row;
     }
-
+    public function selectWhere($where = null)
+    {
+        $sql = "SELECT * FROM $this->table" . (isset($where) ?? " WHERE $where") . " ;";
+        $resp = $this->query($sql, [0]);
+        $rows = $resp->statement->fetchAll(PDO::FETCH_CLASS);
+        return $rows;
+    }
 }
-
-?>

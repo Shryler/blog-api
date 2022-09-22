@@ -25,6 +25,16 @@
                 $row->comments_list = $comments;
             }
         }
+
+        // Tag
+        if(isset($sub_rows['tag'])){
+            $tags = array_values(array_filter($sub_rows['tag'], function($item) use ($row) {
+                return $item->Id_article == $row->Id_article;
+            }));
+            if(isset($tags)){
+                $row->tags_list = array_column($tags, 'tag');
+            }
+        }
     }
 
 }

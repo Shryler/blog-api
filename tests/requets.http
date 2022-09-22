@@ -1,6 +1,6 @@
-@table = theme
+@table = tag
 @id = 1
-@body = {"with": ["article", "theme"]}
+@body = {"with": [ {"article": "article_tag"} ] }
 
 GET http://blog.api/init
 
