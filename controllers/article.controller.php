@@ -18,8 +18,8 @@
             $themes = array_values(array_filter($sub_rows['theme'], function ($item) use ($row) {
                 return $item->Id_theme == $row->Id_theme;
             }));
-            if (isset($themes)) { // Récupère plusieurs objets (getAll)
-                $row->theme = $themes;
+            if (isset($themes)) { // Récupère un seul objet (getMany)
+                $row->theme = count($themes) == 1 ? array_shift($themes) : null;
             }
         }
 
@@ -28,7 +28,7 @@
             $images = array_values(array_filter($sub_rows['image'], function ($item) use ($row) {
                 return $item->Id_article == $row->Id_article;
             }));
-            if (isset($images)) {
+            if (isset($images)) { // Récupère plusieurs objets (getAll)
                 $row->image = $images;
             }
         }
@@ -38,7 +38,7 @@
             $comments = array_values(array_filter($sub_rows['comment'], function ($item) use ($row) {
                 return $item->Id_article == $row->Id_article;
             }));
-            if (isset($comments)) {
+            if (isset($comments)) { // Récupère plusieurs objets (getAll)
                 $row->comments_list = $comments;
             }
         }
@@ -48,7 +48,7 @@
             $tags = array_values(array_filter($sub_rows['tag'], function ($item) use ($row) {
                 return $item->Id_article == $row->Id_article;
             }));
-            if (isset($tags)) {
+            if (isset($tags)) {  // Récupère plusieurs objets du tableau tag (getAll)
                 $row->tags_list = array_column($tags, 'tag');
             }
         }
