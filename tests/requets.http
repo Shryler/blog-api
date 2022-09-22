@@ -1,6 +1,6 @@
-@table = tag
+@table = themeDetail
 @id = 1
-@body = {"with": [ {"article": "article_tag"} ] }
+@body = {"with": [ "article" ] }
 
 GET http://blog.api/init
 
@@ -40,3 +40,7 @@ POST http://blog.api/{{table}}/{{id}}
 Content-Type: application/json
 
 {{body}}
+
+### specific ThemeDetail
+
+GET http://blog.api/themeDetail/{{id}}
